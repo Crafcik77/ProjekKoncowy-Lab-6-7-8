@@ -4,7 +4,7 @@ on:
   schedule:
     - cron:  '0 12 * * 1' # Uruchamia co tydzień o 12:00 w poniedziałek.
   push:
-    branches: Projekt-Końcowy-6-7-8 # Uruchamia po każdym pushu na mastera.
+    branches: [ main ] # Uruchamia po każdym pushu na mastera.
   workflow_dispatch: # Umożliwia uruchomienie ręczne.
 
 jobs:
