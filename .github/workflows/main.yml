@@ -1,0 +1,36 @@
+name: Budowanie pliku .exe i przesyłanie go na GitHub
+
+on:
+  schedule:
+    - cron:  '0 12 * * 1' # Uruchamia co tydzień o 12:00 w poniedziałek.
+  push:
+    branches: [ master ] # Uruchamia po każdym pushu na mastera.
+  workflow_dispatch: # Umożliwia uruchomienie ręczne.
+
+jobs:
+  build:
+    runs-on: windows-latest # Ustawia najnowszy dostępny serwer Windows.
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # Ustawia wersję Pythona.
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        ./installResources.ps1 # Uruchamia skrypt instalujący zależności.
+
+    - name: Build .exe file
+      run: |
+        # Dodaj tutaj komendy do budowania pliku .exe.
+
+    - name: Upload .exe file
+      uses: actions/upload-artifact@v3
+      with:
+        name: app
+        path: dist/main.exe
