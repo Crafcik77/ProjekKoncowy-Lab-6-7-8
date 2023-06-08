@@ -1,4 +1,4 @@
-name: Budowanie pliku .exe i przesyłanie go na GitHub
+name: Budowanie pliku .exe
 
 on:
   schedule:
@@ -31,4 +31,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: app
-        path: dist/main.exe
+        path: main.exe
