@@ -28,7 +28,7 @@ jobs:
         pip install pyyaml
 
     - name: Build executable
-      run: pyinstaller --onefile --noconsole main.py
+      run: pyinstaller --onefile --noconsole projekt.py
 
     - name: Upload .exe file
       uses: actions/upload-artifact@v3
