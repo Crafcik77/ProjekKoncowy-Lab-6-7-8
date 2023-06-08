@@ -4,7 +4,7 @@ on:
   schedule:
     - cron:  '0 12 * * 1' # Uruchamia co tydzień o 12:00 w poniedziałek.
   push:
-    branches: [ main ] # Uruchamia po każdym pushu na mastera.
+    branches: [ master ] # Uruchamia po każdym pushu na mastera.
   workflow_dispatch: # Umożliwia uruchomienie ręczne.
 
 jobs:
@@ -26,9 +26,6 @@ jobs:
         pip install jsonlib
         pip install xmltodict
         pip install pyyaml
-
-    - name: Build executable
-      run: pyinstaller --onefile --noconsole projekt.py
 
     - name: Upload .exe file
       uses: actions/upload-artifact@v3
