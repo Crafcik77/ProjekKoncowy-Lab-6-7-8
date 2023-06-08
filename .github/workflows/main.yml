@@ -22,12 +22,13 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        ./installResources.ps1 # Uruchamia skrypt instalujący zależności.
+        pip install pyinstaller
+        pip install jsonlib
+        pip install xmltodict
+        pip install pyyaml
 
-    - name: Build .exe file
-      run: |
-        # Dodaj tutaj komendy do budowania pliku .exe.
+    - name: Build executable
+      run: pyinstaller --onefile --noconsole main.py
 
     - name: Upload .exe file
       uses: actions/upload-artifact@v3
